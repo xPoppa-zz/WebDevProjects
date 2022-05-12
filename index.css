@@ -1,0 +1,137 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.dark-initial {
+    width: 550px;
+    height: 550px;
+    left: 89px;
+    top: 718px;
+
+    background: #1F2937;
+}
+
+/*
+/////////////////////////////////////////UPPER PART\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+*/
+
+.main {
+    height: 260px;
+    width: 550px;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+    
+    background: linear-gradient(246.26deg, #585DFE 0%, #FB3796 100%);
+    
+}
+
+h1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 38px;
+    /* identical to box height, or 173% */
+
+    text-align: center;
+    letter-spacing: -0.05em;
+
+    color: #FFFFFF;
+}
+
+.input-number {
+    width: 25%;
+    text-align: center;
+
+}
+
+.input-child {
+    margin: 0 auto;
+    position: relative;
+}
+
+
+
+/*/////////////////////////////////////////LOWER PART\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+
+.results {
+    width: 500px;
+    height: 215px;
+    left: 22%;
+    top: 290px;
+    position:absolute;
+    
+}
+
+/*
+    .dark-initial {
+    width: 550px;
+    height: 550px;
+    left: 89px;
+    top: 718px;
+
+    background: #1F2937;
+}
+*/
+
+/*/////////////////////////////////////TABLE HEADERS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+
+.length-header{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.volume-header{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    text-align: center;
+
+    color: #FFFFFF;   
+}
+
+.mass-header{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    text-align: center;
+
+    color: #FFFFFF;    
+}
+
+td {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    text-align: center;
+
+    color: #D2D2D2;
+
+}
+
+.Column-VerticalLine {
+    border-right: thin solid #A9A9A9;
+    padding-right: 5px
+}

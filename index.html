@@ -1,0 +1,66 @@
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="dark-initial">
+            <div class="main">
+                <h1 class="heading">Metric/imperial unit conversion</h1>
+                <div class="input-child">
+                <input class="input-number", id="number", type="number"></input>
+                <br></br>
+                <button onclick="callAll()">Calculate</button>
+                </div>
+            </div>
+            
+            <div class="results">
+                <div class="length">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="2", class="length-header">Length (Meter/Feet)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="Column-VerticalLine" id="mtof-el"></td>
+                                <td id="ftom-el"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="volume">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="2", class="volume-header">Volume (Liters/Gallons)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="Column-VerticalLine" id="ltog-el"></td>
+                                <td id="gtol-el"></td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                </div>
+                <div class="mass">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="2". class="mass-header">Mass (Kilograms/Pounds)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="Column-VerticalLine" id="ktop-el"></td>
+                                <td id="ptok-el"></td>
+                            </tr>
+                        </tbody>
+                    </table>                    </div>  
+                
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
