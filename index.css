@@ -19,12 +19,12 @@ html, body {
 .main {
     height: 260px;
     width: 550px;
-    left: 0px;
-    top: 0px;
-    border-radius: 0px;
-    
+    left: 0;
+    top: 0;
+    border-radius: 0;
+
     background: linear-gradient(246.26deg, #585DFE 0%, #FB3796 100%);
-    
+
 }
 
 h1 {
@@ -60,9 +60,8 @@ h1 {
     width: 500px;
     height: 215px;
     left: 22%;
-    top: 290px;
-    position:absolute;
-    
+    position: relative;
+
 }
 
 /*
@@ -101,7 +100,7 @@ h1 {
 
     text-align: center;
 
-    color: #FFFFFF;   
+    color: #FFFFFF;
 }
 
 .mass-header{
@@ -114,7 +113,7 @@ h1 {
 
     text-align: center;
 
-    color: #FFFFFF;    
+    color: #FFFFFF;
 }
 
 td {
