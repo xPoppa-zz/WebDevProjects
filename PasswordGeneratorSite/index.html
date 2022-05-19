@@ -1,0 +1,44 @@
+<!--
+    HTML steps:
+        
+        -   Make divs fit next to each other.
+        -   start with the javascript functionality of button etc. onclick in button element etc.       see index.js 
+-->
+
+
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>Generate a <span class="green-heading"> random password</span></h1>
+        <p class="support-text">Never use an insecure password again.</p>
+        <button id="button-el", onclick="generatePasswords()"><img src="./images/Iconlightning-bolt.png" alt="Sorry no image" class="button-image"></img> Generate passwords</button>
+        <input id="length" placeholder="Password length" type="number" value="0" max="20"></input>
+        <hr>
+        <div class="top">
+            <div class="top-passwords">
+                <input id="password1-el" class="passwords" type="text"></input>
+                <button onclick="copy()" ><img class="clipboard-img" src="./images/toClipboard.png" alt="sorry no image"></button>
+            </div>
+            <div class="top-passwords">
+                <input id="password2-el" class="passwords" type="text"></input>
+                <button onclick="copy()" ><img class="clipboard-img" src="./images/toClipboard.png" alt="sorry no image"></button>
+            </div>
+        </div>
+        
+        <div class = "bottom">
+            <div class="bottom-passwords">
+                <input id="password3-el" class="passwords" type="text"></input>
+                <button onclick="copy()" ><img class="clipboard-img" src="./images/toClipboard.png" alt="sorry no image"></button>
+            </div>
+            <div class="bottom-passwords">
+                <input id="password4-el" class="passwords" type="text" ></input>
+                <button onclick="copy()" ><img class="clipboard-img" src="./images/toClipboard.png" alt="sorry no image"></button>
+            </div>            
+        </div>
+        
+        
+        <script src="index.js"></script>
+    </body>
+</html>
