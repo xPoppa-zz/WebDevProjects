@@ -1,5 +1,4 @@
 import { Flex } from "@chakra-ui/react";
-import { random } from "lodash";
 import { useEffect, useState } from "react";
 import HomePage from "./HomePage";
 import QuizPage from "./QuizPage";
