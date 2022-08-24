@@ -64,6 +64,7 @@ const HeroContainer = () => {
 		setNewQuestions((prevState) => !prevState);
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const Categories: Categories = {
 		trivia_categories: [
 			{ id: 9, name: "General Knowledge" },
@@ -131,6 +132,7 @@ const HeroContainer = () => {
 			return _data;
 		};
 		getData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [newQuestions]);
 
 	const handleClick = () => {
