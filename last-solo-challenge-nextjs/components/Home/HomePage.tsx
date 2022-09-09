@@ -13,6 +13,19 @@ import NextLink from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
+/* :TODO
+ 	-	Put Menu's into seperate components
+	-	Setup Redux to dispatch question data and other state that needs to dispatch.
+	-	Change up the QuizPage, add state to QuizPage and function so the QuizPage works
+	-	Add Breaking points
+	-	Change question buttons to <box as="button" /> so the size increases and decreases with the text.
+	-	Add Dark Mode
+ 
+
+
+
+*/
+
 interface Categories {
 	trivia_categories: Category[];
 }
