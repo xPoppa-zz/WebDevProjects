@@ -1,6 +1,6 @@
-import { Button, Heading, HStack, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, HStack, VStack } from "@chakra-ui/react";
 
-import { NewQandA } from "./HeroContainer";
+import { NewQandA } from "../Home/HeroContainerHome";
 import he from "he";
 
 /*
@@ -27,9 +27,10 @@ interface Props {
 }
 
 const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
-	const answerElements = data.answers.map((answer, idx) => {
+	const answerElements = data.answers.map((answer: string, idx: number) => {
 		return checkAnswers ? (
-			<Button
+			<Box
+				as={Button}
 				colorScheme={
 					answer === data.correct_answer && data.chosen_answer === answer
 						? "rightAnswers"
@@ -64,9 +65,10 @@ const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
 				key={idx}
 			>
 				{answer}
-			</Button>
+			</Box>
 		) : (
-			<Button
+			<Box
+				as={Button}
 				colorScheme="answers"
 				borderRadius="1rem"
 				fontWeight={"medium"}
@@ -78,7 +80,7 @@ const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
 				size="answers"
 			>
 				{he.decode(answer)}
-			</Button>
+			</Box>
 		);
 	});
 

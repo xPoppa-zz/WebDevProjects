@@ -92,46 +92,46 @@ const HeroContainerHome = () => {
 		],
 	};
 
-	useEffect(() => {
-		const selectCategory = async () => {
-			const response = await fetch("https://opentdb.com/api_category.php");
-			const _data: Categories = await response.json();
-			const dataCategories: number[] = _data.trivia_categories.map(
-				(dataPoint: Category) => {
-					return dataPoint.id;
-				}
-			);
-			const randomCategory: number =
-				dataCategories[Math.floor(Math.random() * dataCategories.length)];
+	// useEffect(() => {
+	// 	const selectCategory = async () => {
+	// 		const response = await fetch("https://opentdb.com/api_category.php");
+	// 		const _data: Categories = await response.json();
+	// 		const dataCategories: number[] = _data.trivia_categories.map(
+	// 			(dataPoint: Category) => {
+	// 				return dataPoint.id;
+	// 			}
+	// 		);
+	// 		const randomCategory: number =
+	// 			dataCategories[Math.floor(Math.random() * dataCategories.length)];
 
-			setRandomIndex(randomCategory);
-		};
-		selectCategory();
+	// 		setRandomIndex(randomCategory);
+	// 	};
+	// 	selectCategory();
 
-		const getData = async () => {
-			const response = await fetch(
-				`https://opentdb.com/api.php?amount=5&category=${randomIndex}&type=multiple`
-			);
-			const _data: Data = await response.json();
-			setData(
-				_data.results.map((obj) => {
-					return {
-						...obj,
-						answers: obj.incorrect_answers
-							.concat(obj.correct_answer)
-							.sort(() => Math.random() - 0.5)
-							.map((value) => value),
-						chosen_answer: undefined,
-					};
-				})
-			);
+	// 	const getData = async () => {
+	// 		const response = await fetch(
+	// 			`https://opentdb.com/api.php?amount=5&category=${randomIndex}&type=multiple`
+	// 		);
+	// 		const _data: Data = await response.json();
+	// 		setData(
+	// 			_data.results.map((obj) => {
+	// 				return {
+	// 					...obj,
+	// 					answers: obj.incorrect_answers
+	// 						.concat(obj.correct_answer)
+	// 						.sort(() => Math.random() - 0.5)
+	// 						.map((value) => value),
+	// 					chosen_answer: undefined,
+	// 				};
+	// 			})
+	// 		);
 
-			setResponseCode(_data.response_code);
-			return _data;
-		};
-		getData();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [newQuestions]);
+	// 		setResponseCode(_data.response_code);
+	// 		return _data;
+	// 	};
+	// 	getData();
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [newQuestions]);
 
 	const handleAnswer = (
 		event: any,
