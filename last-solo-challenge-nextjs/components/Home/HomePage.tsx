@@ -14,6 +14,8 @@ import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import QuestionMenu from "./QuestionMenu";
 import { useAppDispatch, useAppSelector } from "../../Redux/app/hooks";
+import { setQuestions } from "../../Redux/features/Questions/questionsSlice";
+import { setResponseCode } from "../../Redux/features/responseCode/responseCodeSlice";
 
 /* :TODO
  	-	Put Menu's into seperate components
@@ -24,7 +26,7 @@ import { useAppDispatch, useAppSelector } from "../../Redux/app/hooks";
 	-	Add Dark Mode
 */
 
-interface Data {
+export interface Data {
 	response_code: number;
 	results: QandA[];
 }
@@ -58,16 +60,16 @@ let number: number;
 
 const HomePage = () => {
 	const dispatch = useAppDispatch();
-	const { amount, difficulty, type_question, category } = useAppSelector(
-		(state) => state.apiOptions.apiOptions as any
-	);
-	const [data, setData] = useState([empty]);
-	const [responseCode, setResponseCode] = useState(number);
-	const [randomIndex, setRandomIndex] = useState(0);
+	const { amount, difficulty, type_question, category, category_number } =
+		useAppSelector((state) => state.apiOptions.apiOptions);
+
+	const questions = useAppSelector((state) => state.questions.questions);
 
 	const getData = async () => {
+		const url = `https://opentdb.com/api.php?${amount}${category_number}${difficulty}${type_question}`;
+
 		const response = await fetch(
-			`https://opentdb.com/api.php?${amount}${category}${difficulty}${type_question}`
+			`https://opentdb.com/api.php?${amount}${category_number}${difficulty}${type_question}`
 		);
 		const _data: Data = await response.json();
 		const fixedData = _data.results.map((obj) => {
@@ -80,10 +82,9 @@ const HomePage = () => {
 				chosen_answer: undefined,
 			};
 		});
-		dispatch(fixedData as any);
 
-		setResponseCode(_data.response_code);
-		return _data;
+		dispatch(setQuestions(fixedData));
+		dispatch(setResponseCode(_data.response_code));
 	};
 
 	return (
@@ -99,7 +100,10 @@ const HomePage = () => {
 						variant={"mainButtons"}
 						size="start"
 						as="a"
-						onClick={() => {}}
+						onClick={() => {
+							getData();
+							console.log(`dispatched questions object: ${questions}`);
+						}}
 					>
 						start quiz
 					</Button>

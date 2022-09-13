@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../app/store";
 
 interface APIOptions {
 	amount: string;
@@ -11,7 +10,7 @@ export const apiOptionsSlice = createSlice({
 	name: "apiOptions",
 	initialState: {
 		apiOptions: {
-			amount: "amount=10",
+			amount: "amount=5",
 			difficulty: "",
 			type_question: "",
 			category: "",

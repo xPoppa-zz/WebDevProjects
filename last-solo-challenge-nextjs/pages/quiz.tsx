@@ -1,11 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { NextPage } from "next";
-import QuizPage from "../components/QuizPage/QuizPage";
+import HeroContainerQuizPage from "../components/QuizPage/HeroContainerQuizPage";
 
 const Quiz: NextPage = () => {
 	return (
 		<Flex>
-			<Text>Here comes the quizpage</Text>
+			<HeroContainerQuizPage />
 		</Flex>
 	);
 };

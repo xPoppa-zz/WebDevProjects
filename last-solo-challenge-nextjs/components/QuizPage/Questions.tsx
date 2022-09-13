@@ -27,62 +27,67 @@ interface Props {
 }
 
 const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
-	const answerElements = data.answers.map((answer: string, idx: number) => {
-		return checkAnswers ? (
-			<Box
-				as={Button}
-				colorScheme={
-					answer === data.correct_answer && data.chosen_answer === answer
-						? "rightAnswers"
-						: answer === data.chosen_answer
-						? "wrongAnswers"
-						: data.correct_answer === answer
-						? "rightAnswers"
-						: "answers"
-				}
-				variant={
-					answer === data.correct_answer && data.chosen_answer === answer
-						? "solid"
-						: answer === data.chosen_answer
-						? "solid"
-						: data.correct_answer === answer
-						? "solid"
-						: "outline"
-				}
-				opacity={
-					answer === data.correct_answer && data.chosen_answer === answer
-						? "1"
-						: answer === data.chosen_answer
-						? "0.5"
-						: data.correct_answer === answer
-						? "1"
-						: "0.5"
-				}
-				color="#293264"
-				fontWeight={"medium"}
-				size="answers"
-				borderRadius="1rem"
-				key={idx}
-			>
-				{answer}
-			</Box>
-		) : (
-			<Box
-				as={Button}
-				colorScheme="answers"
-				borderRadius="1rem"
-				fontWeight={"medium"}
-				key={idx}
-				variant={data.chosen_answer === answer ? "solid" : "outline"}
-				onClick={(event: any) => {
-					clicked(event, id, answer);
-				}}
-				size="answers"
-			>
-				{he.decode(answer)}
-			</Box>
-		);
-	});
+	let answerElements = [<Box key={5}></Box>];
+	if (data !== undefined) {
+		answerElements = data.answers.map((answer: string, idx: number) => {
+			return checkAnswers ? (
+				<Box
+					as={Button}
+					colorScheme={
+						answer === data.correct_answer && data.chosen_answer === answer
+							? "rightAnswers"
+							: answer === data.chosen_answer
+							? "wrongAnswers"
+							: data.correct_answer === answer
+							? "rightAnswers"
+							: "answers"
+					}
+					variant={
+						answer === data.correct_answer && data.chosen_answer === answer
+							? "solid"
+							: answer === data.chosen_answer
+							? "solid"
+							: data.correct_answer === answer
+							? "solid"
+							: "outline"
+					}
+					opacity={
+						answer === data.correct_answer && data.chosen_answer === answer
+							? "1"
+							: answer === data.chosen_answer
+							? "0.5"
+							: data.correct_answer === answer
+							? "1"
+							: "0.5"
+					}
+					color="#293264"
+					fontWeight={"medium"}
+					size="answers"
+					borderRadius="1rem"
+					key={idx}
+				>
+					{answer}
+				</Box>
+			) : (
+				<Box
+					as={Button}
+					colorScheme="answers"
+					borderRadius="1rem"
+					fontWeight={"medium"}
+					key={idx}
+					variant={data.chosen_answer === answer ? "solid" : "outline"}
+					onClick={(event: any) => {
+						clicked(event, id, answer);
+					}}
+					size="answers"
+				>
+					{he.decode(answer)}
+				</Box>
+			);
+		});
+	} else {
+		answerElements = [<Box key={500}>No Data yet</Box>];
+	}
 
 	return (
 		<VStack>

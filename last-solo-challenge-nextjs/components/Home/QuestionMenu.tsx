@@ -8,7 +8,7 @@ import {
 	MenuList,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useAppDispatch } from "../../Redux/app/hooks";
+import { useAppDispatch, useAppSelector } from "../../Redux/app/hooks";
 import {
 	setAmount,
 	setDifficulty,
@@ -29,8 +29,22 @@ interface Category {
 }
 
 const QuestionMenu = () => {
-	const dispatch = useAppDispatch();
 	const [triviaCategories, setTriviaCategories] = useState([""]);
+	const dispatch = useAppDispatch();
+
+	const amount = useAppSelector((state) => state.apiOptions.apiOptions.amount);
+	const difficulty = useAppSelector(
+		(state) => state.apiOptions.apiOptions.difficulty
+	);
+	const type_question = useAppSelector(
+		(state) => state.apiOptions.apiOptions.type_question
+	);
+	const category = useAppSelector(
+		(state) => state.apiOptions.apiOptions.category
+	);
+	const category_number = useAppSelector(
+		(state) => state.apiOptions.apiOptions.category_number
+	);
 
 	useEffect(() => {
 		const selectDifferentOptions = async () => {
@@ -39,6 +53,7 @@ const QuestionMenu = () => {
 			const categories: string[] = _categories.trivia_categories.map(
 				(dataPoint: Category) => dataPoint.name
 			);
+
 			setTriviaCategories(categories);
 		};
 		selectDifferentOptions();
@@ -50,7 +65,7 @@ const QuestionMenu = () => {
 		const catNumb: Category[] = _categories.trivia_categories.filter(
 			(cat, idx) => cat.name === category
 		);
-		dispatch(setCategoryNumber(catNumb[0].id.toString()));
+		dispatch(setCategoryNumber(`&category=${catNumb[0].id.toString()}`));
 	};
 
 	const categories = triviaCategories.map((category, idx) => {
@@ -66,7 +81,7 @@ const QuestionMenu = () => {
 		);
 	});
 
-	const N = 50;
+	const N = 5;
 	const amountQuestions = Array.from({ length: N }, (_, index) => index + 1);
 
 	const selectAmount = amountQuestions.map((nr, idx) => {
@@ -91,7 +106,7 @@ const QuestionMenu = () => {
 							rightIcon={<ChevronDownIcon />}
 							color="white"
 						>
-							{isOpen ? "Close" : "Choose Categories"}
+							{isOpen ? "Close" : category ? category : "Choose Categories"}
 						</MenuButton>
 						<MenuList overflow={"scroll"} h="20vh">
 							{categories}
@@ -108,7 +123,7 @@ const QuestionMenu = () => {
 							rightIcon={<ChevronDownIcon />}
 							color="white"
 						>
-							{isOpen ? "Close" : "Choose Difficulty"}
+							{isOpen ? "Close" : difficulty ? difficulty : "Choose Difficulty"}
 						</MenuButton>
 						<MenuList>
 							<MenuItem onClick={() => dispatch(setDifficulty(""))}>
@@ -142,7 +157,11 @@ const QuestionMenu = () => {
 							rightIcon={<ChevronDownIcon />}
 							color="white"
 						>
-							{isOpen ? "Close" : "Choose Question Type"}
+							{isOpen
+								? "Close"
+								: type_question
+								? type_question
+								: "Choose Question Type"}
 						</MenuButton>
 						<MenuList>
 							<MenuItem onClick={() => dispatch(setTypeQuestion(""))}>
@@ -171,7 +190,7 @@ const QuestionMenu = () => {
 							rightIcon={<ChevronDownIcon />}
 							color="white"
 						>
-							{isOpen ? "Close" : "Choose nr of Questions"}
+							{isOpen ? "Close" : amount ? amount : "Choose nr of Questions"}
 						</MenuButton>
 						<MenuList h="20vh" overflow="scroll">
 							{selectAmount}

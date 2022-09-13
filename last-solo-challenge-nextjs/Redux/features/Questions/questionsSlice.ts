@@ -23,15 +23,31 @@ let questionsSkeleton: IAppState[];
 export const questionsSlice = createSlice({
 	name: "questions",
 	initialState: {
-		questions: [{}] as IAppState[],
+		questions: [
+			{
+				answers: [""],
+				chosen_answer: "",
+				category: "",
+				correct_answer: "",
+				difficulty: "",
+				incorrect_answers: [""],
+				question: "",
+				type: "",
+				clicked: false,
+				id: 0,
+			},
+		] as IAppState[],
 	},
 	reducers: {
 		setQuestions: (state, action: PayloadAction<IAppState[]>) => {
 			state.questions = action.payload;
 		},
+		updateChosenAnswer: (state, action: PayloadAction<any>) => {
+			state.questions[action.payload.id].chosen_answer = action.payload.answer;
+		},
 	},
 });
 
-export const { setQuestions } = questionsSlice.actions;
+export const { setQuestions, updateChosenAnswer } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
