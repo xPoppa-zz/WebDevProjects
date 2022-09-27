@@ -1,7 +1,15 @@
-import { Flex } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+	Flex,
+	IconButton,
+	useColorMode,
+	useColorModeValue,
+} from "@chakra-ui/react";
 import QuizPage from "./QuizPage";
 
 const HeroContainerQuizPage = () => {
+	const { colorMode, toggleColorMode } = useColorMode();
+	const color = useColorModeValue("#293264", "white");
 	return (
 		<Flex>
 			<Flex
@@ -20,7 +28,24 @@ const HeroContainerQuizPage = () => {
 					backgroundPosition="right top"
 					backgroundRepeat="no-repeat"
 				>
-					<Flex justify="center" align="center" minH="100vh" w="80vw" ml="10vw">
+					<IconButton
+						aria-label="darkMode-toggler"
+						onClick={toggleColorMode}
+						position="absolute"
+						top="0"
+						right={{ base: "25vw", md: "20vw" }}
+						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+						color={color}
+						variant="ghost"
+					/>
+					<Flex
+						justify="center"
+						align="center"
+						minH="100vh"
+						w="80vw"
+						ml="10vw"
+						mt={{ base: "2rem", md: "0rem" }}
+					>
 						<QuizPage />
 					</Flex>
 				</Flex>

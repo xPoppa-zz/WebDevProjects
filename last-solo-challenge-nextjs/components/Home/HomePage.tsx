@@ -88,30 +88,29 @@ const HomePage = () => {
 	};
 
 	return (
-		<Flex>
-			<VStack spacing="10">
-				<Heading fontSize="7xl">Quizzical</Heading>
-				<Text>Are you ready for a quiz? Click start quiz</Text>
-				<QuestionMenu />
+		<Flex align={"start"} justify="end">
+			<Flex>
+				<VStack spacing="10">
+					<Heading fontSize="7xl">Quizzical</Heading>
+					<Text>Are you ready for a quiz? Click start quiz</Text>
+					<QuestionMenu />
 
-				{/* Make a menu where people can choose which questions they want to have difficulty etc.*/}
-				<NextLink href="/quiz" passHref>
-					<Button
-						variant={"mainButtons"}
-						size="start"
-						as="a"
-						onClick={() => {
-							getData();
-							console.log(`dispatched questions object: ${questions}`);
-						}}
-					>
-						start quiz
-					</Button>
-				</NextLink>
-				<Button onClick={toggleColorMode}>
-					Toggle {colorMode === "light" ? "Dark" : "Light"}
-				</Button>
-			</VStack>
+					{/* Make a menu where people can choose which questions they want to have difficulty etc.*/}
+					<NextLink href="/quiz" passHref>
+						<Button
+							variant={"mainButtons"}
+							size="start"
+							as="a"
+							onClick={() => {
+								getData();
+								console.log(`dispatched questions object: ${questions}`);
+							}}
+						>
+							start quiz
+						</Button>
+					</NextLink>
+				</VStack>
+			</Flex>
 		</Flex>
 	);
 };

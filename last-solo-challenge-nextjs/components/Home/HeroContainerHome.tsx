@@ -1,7 +1,14 @@
-import { Flex } from "@chakra-ui/react";
+import {
+	Button,
+	Flex,
+	IconButton,
+	useColorMode,
+	useColorModeValue,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import HomePage from "./HomePage";
 import QuizPage from "../QuizPage/QuizPage";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 // https://github.com/SXV357/Quizzical----Scrimba-Learn-React-Final_Project
 
@@ -155,6 +162,8 @@ const HeroContainerHome = () => {
 	const resetCount = () => {
 		setCount(0);
 	};
+	const { colorMode, toggleColorMode } = useColorMode();
+	const color = useColorModeValue("#293264", "white");
 	return (
 		<Flex>
 			<Flex
@@ -173,6 +182,16 @@ const HeroContainerHome = () => {
 					backgroundPosition="right top"
 					backgroundRepeat="no-repeat"
 				>
+					<IconButton
+						aria-label="darkMode-toggler"
+						onClick={toggleColorMode}
+						position="absolute"
+						top="0"
+						right="20vw"
+						icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+						color={color}
+						variant="ghost"
+					/>
 					<Flex justify="center" align="center" h="100vh" w="80vw" ml="10vw">
 						<HomePage />
 					</Flex>
