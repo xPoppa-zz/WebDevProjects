@@ -18,6 +18,8 @@ results[0] = {
 };
 */
 
+// Fix styling of the box so that you have the sae as the buttons just to get the text nicely aligned with each other. Do this tommorow bro.
+
 interface Props {
 	data: NewQandA;
 	id: number;
@@ -32,25 +34,40 @@ const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
 		answerElements = data.answers.map((answer: string, idx: number) => {
 			return checkAnswers ? (
 				<Box
-					as={Button}
-					colorScheme={
+					as="button"
+					bg={
 						answer === data.correct_answer && data.chosen_answer === answer
-							? "rightAnswers"
+							? "rightAnswers.500"
 							: answer === data.chosen_answer
-							? "wrongAnswers"
+							? "wrongAnswers.500"
 							: data.correct_answer === answer
-							? "rightAnswers"
-							: "answers"
+							? "rightAnswers.500"
+							: "transparent"
 					}
-					variant={
+					_hover={{
+						background:
+							answer === data.correct_answer && data.chosen_answer === answer
+								? "rightAnswers.500"
+								: answer === data.chosen_answer
+								? "wrongAnswers.500"
+								: data.correct_answer === answer
+								? "rightAnswers.500"
+								: "answers.500",
+					}}
+					textAlign="center"
+					alignContent={"center"}
+					borderWidth="1px"
+					borderColor={
 						answer === data.correct_answer && data.chosen_answer === answer
-							? "solid"
+							? "rightAnswers.500"
 							: answer === data.chosen_answer
-							? "solid"
+							? "wrongAnswers.500"
 							: data.correct_answer === answer
-							? "solid"
-							: "outline"
+							? "rightAnswers.500"
+							: "answers.500"
 					}
+					borderStyle="solid"
+					borderRadius="1rem"
 					opacity={
 						answer === data.correct_answer && data.chosen_answer === answer
 							? "1"
@@ -62,24 +79,35 @@ const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
 					}
 					color="#293264"
 					fontWeight={"medium"}
-					size="answers"
-					borderRadius="1rem"
+					minH="2.5rem"
+					minW="7.5rem"
+					fontSize="1.25rem"
+					px="2.5rem"
+					py="0.9rem"
 					key={idx}
 				>
 					{answer}
 				</Box>
 			) : (
 				<Box
-					as={Button}
-					colorScheme="answers"
+					as="button"
+					bg={data.chosen_answer === answer ? "answers.500" : "transparent"}
+					_hover={{ background: "answers.500" }}
 					borderRadius="1rem"
 					fontWeight={"medium"}
 					key={idx}
-					variant={data.chosen_answer === answer ? "solid" : "outline"}
+					borderWidth="1px"
+					borderColor="answers.500"
+					borderStyle="solid"
+					minH="2.5rem"
+					minW="7.5rem"
+					fontSize="1.25rem"
+					px="2.5rem"
+					py="0.9rem"
+					color="#293264"
 					onClick={(event: any) => {
 						clicked(event, id, answer);
 					}}
-					size="answers"
 				>
 					{he.decode(answer)}
 				</Box>

@@ -20,7 +20,14 @@ const HeroContainerQuizPage = () => {
 					backgroundPosition="right top"
 					backgroundRepeat="no-repeat"
 				>
-					<Flex justify="center" align="center" h="100vh" w="80vw" ml="10vw">
+					<Flex
+						justify="center"
+						align="center"
+						h="100vh"
+						w="80vw"
+						ml="10vw"
+						bg="white"
+					>
 						<QuizPage />
 					</Flex>
 				</Flex>

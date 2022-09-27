@@ -2,6 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 
 // Component style overrides
 import Button from "./components/Button";
+import Box from "./components/Box";
 
 const overrides = {
 	colors: {
@@ -38,6 +39,7 @@ const overrides = {
 	// Other foundational style overrides go here
 	components: {
 		Button: Button,
+		Box: Box,
 	},
 	// Other components go here
 };
