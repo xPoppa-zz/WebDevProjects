@@ -9,6 +9,7 @@ import {
 } from "../../Redux/features/Questions/questionsSlice";
 import { Data } from "../Home/HomePage";
 import { setResponseCode } from "../../Redux/features/responseCode/responseCodeSlice";
+import NextLink from "next/link";
 
 const QuizPage = () => {
 	const [newGame, setNewGame] = useState(false);
@@ -127,6 +128,11 @@ const QuizPage = () => {
 						>
 							New Round
 						</Button>
+						<NextLink href="/" passHref>
+							<Button as="a" variant="mainButtons" size="mainQuiz">
+								Other Category
+							</Button>
+						</NextLink>
 					</HStack>
 				)}
 			</VStack>

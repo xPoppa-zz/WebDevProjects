@@ -8,22 +8,21 @@ import {
 	MenuButton,
 	MenuList,
 	MenuItem,
+	useColorMode,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { useEffect, useState } from "react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import QuestionMenu from "./QuestionMenu";
 import { useAppDispatch, useAppSelector } from "../../Redux/app/hooks";
 import { setQuestions } from "../../Redux/features/Questions/questionsSlice";
 import { setResponseCode } from "../../Redux/features/responseCode/responseCodeSlice";
 
 /* :TODO
- 	-	Put Menu's into seperate components
-	-	Setup Redux to dispatch question data and other state that needs to dispatch.
-	-	Change up the QuizPage, add state to QuizPage and function so the QuizPage works
-	-	Add Breaking points
-	-	Change question buttons to <box as="button" /> so the size increases and decreases with the text.
-	-	Add Dark Mode
+ 	-	Put Menu's into seperate components Done
+	-	Setup Redux to dispatch question data and other state that needs to dispatch. Done
+	-	Change up the QuizPage, add state to QuizPage and function so the QuizPage works Done
+	-	Add Breaking points Done
+	-	Change question buttons to <box as="button" /> so the size increases and decreases with the text. Done
+	-	Add Dark Mode Done
 */
 
 export interface Data {
@@ -64,6 +63,7 @@ const HomePage = () => {
 		useAppSelector((state) => state.apiOptions.apiOptions);
 
 	const questions = useAppSelector((state) => state.questions.questions);
+	const { colorMode, toggleColorMode } = useColorMode();
 
 	const getData = async () => {
 		const url = `https://opentdb.com/api.php?${amount}${category_number}${difficulty}${type_question}`;
@@ -108,6 +108,9 @@ const HomePage = () => {
 						start quiz
 					</Button>
 				</NextLink>
+				<Button onClick={toggleColorMode}>
+					Toggle {colorMode === "light" ? "Dark" : "Light"}
+				</Button>
 			</VStack>
 		</Flex>
 	);

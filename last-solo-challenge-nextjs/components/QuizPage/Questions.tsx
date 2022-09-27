@@ -1,4 +1,12 @@
-import { Box, Button, Heading, HStack, VStack } from "@chakra-ui/react";
+import {
+	Box,
+	Button,
+	Flex,
+	Heading,
+	HStack,
+	useColorModeValue,
+	VStack,
+} from "@chakra-ui/react";
 
 import { NewQandA } from "../Home/HeroContainerHome";
 import he from "he";
@@ -18,7 +26,7 @@ results[0] = {
 };
 */
 
-// Fix styling of the box so that you have the sae as the buttons just to get the text nicely aligned with each other. Do this tommorow bro.
+// Fix styling of the box so that you have the sae as the buttons just to get the text nicely aligned with each other. Do this tommorow bro. Check.
 
 interface Props {
 	data: NewQandA;
@@ -29,6 +37,8 @@ interface Props {
 }
 
 const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
+	const color = useColorModeValue("#293264", "white");
+	const headingColor = useColorModeValue("heading.500", "answers.300");
 	let answerElements = [<Box key={5}></Box>];
 	if (data !== undefined) {
 		answerElements = data.answers.map((answer: string, idx: number) => {
@@ -77,7 +87,7 @@ const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
 							? "1"
 							: "0.5"
 					}
-					color="#293264"
+					color={color}
 					fontWeight={"medium"}
 					minH="2.5rem"
 					minW="7.5rem"
@@ -104,7 +114,7 @@ const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
 					fontSize="1.25rem"
 					px="2.5rem"
 					py="0.9rem"
-					color="#293264"
+					color={color}
 					onClick={(event: any) => {
 						clicked(event, id, answer);
 					}}
@@ -119,10 +129,12 @@ const Questions = ({ data, id, clicked, checkAnswers }: Props) => {
 
 	return (
 		<VStack>
-			<Heading fontSize="3xl" color="heading.500">
+			<Heading fontSize="3xl" color={headingColor}>
 				{he.decode(data.question)}
 			</Heading>
-			<HStack maxW="100vw">{answerElements}</HStack>
+			<Flex direction={{ base: "column", md: "row" }} maxW="100vw">
+				{answerElements}
+			</Flex>
 		</VStack>
 	);
 };

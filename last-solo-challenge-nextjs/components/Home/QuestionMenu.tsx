@@ -6,6 +6,7 @@ import {
 	MenuButton,
 	MenuItem,
 	MenuList,
+	useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Redux/app/hooks";
@@ -45,6 +46,8 @@ const QuestionMenu = () => {
 	const category_number = useAppSelector(
 		(state) => state.apiOptions.apiOptions.category_number
 	);
+
+	const color = useColorModeValue("gray.800", "white");
 
 	useEffect(() => {
 		const selectDifferentOptions = async () => {
@@ -104,7 +107,7 @@ const QuestionMenu = () => {
 							isActive={isOpen}
 							as={Button}
 							rightIcon={<ChevronDownIcon />}
-							color="white"
+							color={color}
 						>
 							{isOpen ? "Close" : category ? category : "Choose Categories"}
 						</MenuButton>
@@ -121,7 +124,7 @@ const QuestionMenu = () => {
 							isActive={isOpen}
 							as={Button}
 							rightIcon={<ChevronDownIcon />}
-							color="white"
+							color={color}
 						>
 							{isOpen ? "Close" : difficulty ? difficulty : "Choose Difficulty"}
 						</MenuButton>
@@ -155,7 +158,7 @@ const QuestionMenu = () => {
 							isActive={isOpen}
 							as={Button}
 							rightIcon={<ChevronDownIcon />}
-							color="white"
+							color={color}
 						>
 							{isOpen
 								? "Close"
@@ -188,7 +191,7 @@ const QuestionMenu = () => {
 							isActive={isOpen}
 							as={Button}
 							rightIcon={<ChevronDownIcon />}
-							color="white"
+							color={color}
 						>
 							{isOpen ? "Close" : amount ? amount : "Choose nr of Questions"}
 						</MenuButton>

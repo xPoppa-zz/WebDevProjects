@@ -5,6 +5,18 @@ import Button from "./components/Button";
 import Box from "./components/Box";
 
 const overrides = {
+	config: {
+		initialColorMode: "light",
+		useSystemColorMode: false,
+	},
+
+	breakpoints: {
+		sm: "30em",
+		md: "48em",
+		lg: "62em",
+		xl: "80em",
+		"2xl": "96em",
+	},
 	colors: {
 		answers: {
 			"50": "#eaecf6",
